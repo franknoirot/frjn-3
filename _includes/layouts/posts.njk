@@ -1,0 +1,13 @@
+---
+  layout: 'layouts/base.njk'
+  stylesheet: posts
+---
+<h1>{{title}}</h1>
+<section class="meta">
+  <p><em>{{ description }}</em></p>
+  <p><em>A {{ growthStage }}-stage note</em></p>
+  <p><em>Last tended {{ updated | formatDate }} originally posted {{ created | formatDate }}</em></p>
+</section>
+{{ content | safe }}
+
+{% include "components/backlinksSection.njk" %}

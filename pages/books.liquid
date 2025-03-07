@@ -1,0 +1,10 @@
+---
+title: All my books
+layout: layouts/base.njk
+---
+<h1>{{ title }}</h1>
+
+{%- assign sortedBooks = collections.books | sortByKey: 'data.title', false -%}
+<ul class="grid books">{% for book in collections.books %}
+  {% include 'components/grid-card' type: 'books' item: book %}
+{% endfor %}</ul>

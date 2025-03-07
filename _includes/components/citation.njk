@@ -1,0 +1,14 @@
+<p>
+  {% set citationText %}
+  {% if author %}{{author}}{% elif editor %}{{editor}}, editor{% else %}Author Unknown{% endif %}.
+  <em>{{title}}{% if subtitle %}: {{subtitle}}{% endif %}.</em>
+  {% if edition %}{{edition}}.{% endif %}
+  {% if publication and publisher %}
+  {{ publishLocation }}: {{publisher}}, 
+  {% endif %}
+  {{ publishDate or firstPublished or 'Date unknown' }}.&nbsp;
+  {% if pageRange %}{{pageRange}}. {% endif %}
+  {{ format }}.
+  {% endset %}
+  {{ citationText | safe }}
+</p>

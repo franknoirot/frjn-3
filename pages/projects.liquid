@@ -1,0 +1,10 @@
+---
+title: All my projects
+layout: layouts/base.njk
+---
+<h1>{{ title }}</h1>
+
+{%- assign sortedProjects = collections.projects | sortByKey: 'data.updated', true -%}
+<ul class="grid projects">{% for project in sortedProjects %}
+  {% include 'components/grid-card' type: 'project' item: project %}
+{% endfor %}</ul>

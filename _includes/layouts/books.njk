@@ -1,0 +1,32 @@
+---
+  layout: 'layouts/base.njk'
+  stylesheet: books
+---
+
+<img src="/assets/{{coverImg}}" style="max-height:500px;"/>
+<section class="intro">
+  <h1>{{title}}</h1><h2>{{ subtitle }}</h2>
+  <div class="meta">
+    <p>{% if author != undefined and editor %}edited {% endif %}by {{ author or editor or "unknown" }}</p>
+    {% if publishDate or firstPublished %}<p>
+      published in&nbsp;
+      <time dateTime="{{ publishDate or firstPublished or ""}}">
+        {{ publishDate or firstPublished }}
+      </time>
+    </p>{% endif %}
+    {% if publishDate or firstPublished %}<p>first published in {{ firstPublished }}</p>{% endif %}
+    {% if author and editor %}<p>edited by {{ editor }}</p>{% endif %} 
+    {% if translator %}<p>translated by {{ translator }}</p>{% endif %}
+    {% if category %}<p>{{ category }}</p>{% endif %}
+    <p>{% if isBorrowed %}ⓧ Currently checked out{% else %}✔ Available to borrow{% endif %}</p>
+    {% if pages %}<p>{{ pages }} pages</p>{% endif %}
+    {% if publisher %}<p>published by {{ publisher }}</p>{% endif %}
+    {% if publishLocation %}<p>published in {{ publishLocation }}</p>{% endif %}
+    {% if format %}<p>owned in {{ format }} format</p>{% endif %}
+  </div>
+</section>
+{{ content | safe }}
+
+<h2>Citation</h2>
+{% include "components/citation.njk" %}
+{% include "components/backlinksSection.njk" %}

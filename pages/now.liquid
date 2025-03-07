@@ -1,0 +1,10 @@
+---
+title: All my status updates
+layout: layouts/base.njk
+---
+<h1>{{ title }}</h1>
+
+{%- assign sortedUpdates = collections.now | sortByKey: 'fileSlug', true -%}
+<ul class="grid now">{% for update in sortedUpdates %}
+  {% include 'components/grid-card' type: 'now' item: update %}
+{% endfor %}</ul>

@@ -1,0 +1,10 @@
+<li class="grid-card {{type}}">
+<a href="{{ item.url }}">
+  {% if type == 'books' %}
+  <img src="/assets/{{item.data.coverImg}}" alt="Cover of {{item.data.title}}" loading="lazy">
+  {% endif %}
+  <span>{{item.data.title}}</span>
+  {% if item.data.updated %}<span>updated <time>{{ item.data.updated | formatDate }}</time></span>{% endif %}
+  {% if type == 'now' %}<span><time>{{ item.fileSlug }}</time></span>{% endif %}
+</a>
+</li>

@@ -1,0 +1,10 @@
+---
+title: All my posts
+layout: layouts/base.njk
+---
+<h1>{{ title }}</h1>
+
+{%- assign sortedPosts = collections.posts | sortByKey: 'data.updated', true -%}
+<ul class="grid posts">{% for post in sortedPosts %}
+  {% include 'components/grid-card' type: 'post' item: post %}
+{% endfor %}</ul>

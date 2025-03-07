@@ -1,0 +1,32 @@
+@font-face {
+  font-family: "Overpass";
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: url("/styles/OverpassNerdFont-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Overpass";
+  font-style: italic;
+  font-weight: normal;
+  font-display: swap;
+  src: url("/styles/OverpassNerdFont-Italic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Overpass";
+  font-style: normal;
+  font-weight: bold;
+  font-display: swap;
+  src: url("/styles/OverpassNerdFont-Bold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Overpass";
+  font-style: italic;
+  font-weight: bold;
+  font-display: swap;
+  font-size-adjust: 0.3;
+  src: url("/styles/OverpassNerdFont-BoldItalic.woff2") format("woff2");
+}

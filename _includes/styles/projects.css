@@ -1,0 +1,13 @@
+main {
+  max-width: 80ch;
+  margin-inline: auto;
+}
+
+.meta {
+  color: var(--mid);
+  border-inline-start: 1px solid;
+}
+
+.meta p {
+  margin: 0.5rem;
+}

@@ -1,0 +1,235 @@
+:root {
+  --bg: 20, 20, 20;
+  --text: #adadb2;
+  --mid: #667;
+  --near-bg: #335;
+  --pop: mediumseagreen;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: 245, 245, 245;
+    --text: #1a1a1a;
+    --mid: #889;
+    --near-bg: #ccc;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Overpass", sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  background-color: rgb(var(--bg));
+  color: var(--text);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 1fr;
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-underline-offset: 2px;
+  text-decoration-color: var(--mid);
+}
+a:hover {
+  color: var(--pop);
+}
+
+.nav-wrapper {
+  position: sticky;
+  top: 16px;
+  margin: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.site-nav,
+.searchbar,
+.searchbar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.site-nav,
+.searchbar,
+.searchbar-wrapper button,
+.searchbar .search-results {
+  padding: 0.5rem;
+  background-color: rgba(var(--bg), 0.75);
+  backdrop-filter: blur(3px);
+  border: solid;
+  width: fit-content;
+}
+.site-nav .content-types {
+  display: contents;
+}
+.site-nav a {
+  text-decoration-color: var(--near-bg);
+}
+.site-nav a:hover,
+.site-nav a[aria-current="page"] {
+  color: var(--pop);
+}
+
+.searchbar {
+  border: 1px var(--mid) solid;
+}
+.searchbar-wrapper button {
+  display: none;
+}
+.searchbar input {
+  background-color: var(--near-bg);
+  color: var(--text);
+  border: solid var(--near-bg) 1px;
+  border-radius: 0;
+  padding: 0.5rem;
+}
+.searchbar input::placeholder {
+  color: var(--text);
+}
+.searchbar .search-results {
+  position: absolute;
+  top: calc(100% + 1rem);
+  right: 0;
+  max-height: 50vh;
+  overflow: auto;
+  width: max-content;
+  max-width: 400px;
+}
+.search-results ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+.search-results li {
+  padding: 0.25rem 0.5rem;
+  border: solid 1px var(--near-bg);
+}
+.search-results li:hover {
+  color: var(--pop);
+}
+.search-results a {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.search-results a span {
+  color: var(--mid);
+}
+@media (max-width: 768px) {
+  .nav-wrapper {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+  }
+  .site-nav {
+    border-width: 2px 2px 0 0;
+    flex-grow: 1;
+    padding-inline-start: 1rem;
+    overflow: auto;
+  }
+  .site-nav .content-types {
+    display: flex;
+    gap: 1rem;
+    flex-grow: 1;
+    overflow: auto;
+    padding-inline: 1rem;
+    margin: 0;
+  }
+  .searchbar-wrapper {
+    display: contents;
+  }
+  .searchbar-wrapper button {
+    display: block;
+    border-width: 2px 0 0 0;
+    padding: 0 1rem;
+  }
+  .searchbar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 100%;
+    width: 100%;
+    border: solid var(--text);
+    border-width: 2px 0 0 0;
+  }
+  .searchbar input {
+    display: block;
+    padding: 0.5rem;
+    font-size: 1rem;
+    width: calc(100% - 1rem);
+  }
+  .searchbar .search-results {
+    top: auto;
+    bottom: 100%;
+    right: 1rem;
+    width: calc(100% - 4rem);
+    margin: 1rem;
+  }
+}
+
+main {
+  margin: 0.5rem;
+  padding: 0.5rem;
+}
+main img {
+  max-width: 100%;
+}
+
+h2 small {
+  font-weight: normal;
+  color: var(--mid);
+}
+
+.grid {
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+}
+.grid-card,
+.grid-card a > p {
+  list-style: none;
+  display: contents;
+}
+
+.grid-card a {
+  text-decoration: none;
+  margin: 0;
+  display: grid;
+  border: solid 1px var(--near-bg);
+  padding: 0.5rem;
+}
+.grid-card a:hover {
+  border-color: var(--pop);
+}
+
+.grid-card img {
+  max-width: 100%;
+  max-height: 300px;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.grid-card span:has(time) {
+  font-size: 0.8em;
+  color: var(--mid);
+}
+
+footer {
+  margin: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  font-size: 0.75rem;
+  border: solid 1px;
+  border-bottom: none;
+}

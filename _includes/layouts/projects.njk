@@ -1,0 +1,13 @@
+---
+  layout: 'layouts/base.njk'
+  stylesheet: projects
+---
+<img src="/assets/{{ image }}" />
+<h1>{{ title }}</h1>
+<section class="meta">
+  <p><em>for {{organization}} as a {{role}}</em></p>
+  <p><em>built with {{tools}}</em></p>
+</section>
+{{ content | safe }}
+
+{% include "components/backlinksSection.njk" %}

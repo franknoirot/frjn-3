@@ -1,0 +1,10 @@
+---
+  layout: 'layouts/base.njk'
+  stylesheet: now
+---
+
+<h1>{{title}}</h1>
+{{ content | safe }}
+<p class="signoff">- frank, {{page.fileSlug}}</p>
+
+{% include "components/backlinksSection.njk" %}

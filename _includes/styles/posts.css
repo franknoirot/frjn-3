@@ -1,0 +1,20 @@
+main {
+  max-width: 80ch;
+  margin-inline: auto;
+}
+
+main img,
+main video {
+  display: block;
+  max-width: 100%;
+  margin: 3rem auto;
+}
+
+.meta {
+  color: var(--mid);
+  border-inline-start: 1px solid;
+}
+
+.meta p {
+  margin: 0.5rem;
+}

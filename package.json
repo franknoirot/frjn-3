@@ -1,0 +1,25 @@
+{
+  "name": "frjn2025",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "eleventy",
+    "build-nocolor": "cross-env NODE_DISABLE_COLORS=1 eleventy",
+    "start": "eleventy --serve --quiet",
+    "debug": "cross-env DEBUG=Eleventy* eleventy",
+    "debugstart": "cross-env DEBUG=Eleventy* eleventy --serve --quiet",
+    "benchmark": "cross-env DEBUG=Eleventy:Benchmark* eleventy",
+    "linecount": "git ls-files -- ':!:pnpm-lock.yaml' ':!:public/*' ':!:LICENSE' ':!:content' ':!:*.woff2' | xargs wc -l"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
+    "glob": "^11.0.1",
+    "markdown-it-footnote": "^4.0.0"
+  }
+}

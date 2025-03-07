@@ -1,0 +1,14 @@
+{%- import "components/macros.njk" as macros -%}
+
+<div class="nav-wrapper">
+  <nav class="site-nav">
+    <a href="/" style="color: var(--pop)">f(n)</a>
+    <ul class="content-types">
+    {%- for type in contentTypes -%}
+    <a href="/{{ type.name }}" {%- if page.url.includes(type.name) -%}aria-current="page"{%- endif -%}>{{ type.name }}</a>
+    {%- endfor -%}
+    <a href="/about">me</a>
+    </ul>
+  </nav>
+  {{ macros.searchBar(collections.all) }}
+</div>
