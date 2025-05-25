@@ -1,9 +1,8 @@
 :root {
-  --bg: 20, 20, 20;
-  --text: #adadb2;
-  --mid: #667;
-  --near-bg: #335;
-  --pop: mediumseagreen;
+  --bg: 30, 40, 50;
+  --text: #dddde2;
+  --mid: #9aa;
+  --near-bg: #678;
 }
 
 @media (prefers-color-scheme: light) {
@@ -34,6 +33,7 @@ a {
   text-underline-offset: 2px;
   text-decoration-color: var(--mid);
 }
+
 a:hover {
   color: var(--pop);
 }
@@ -44,6 +44,30 @@ a:hover {
   margin: 1rem;
   display: flex;
   justify-content: space-between;
+  z-index: 10;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.not-sr-only {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
 }
 
 .site-nav,
@@ -53,6 +77,7 @@ a:hover {
   align-items: center;
   gap: 0.5rem;
 }
+
 .site-nav,
 .searchbar,
 .searchbar-wrapper button,
@@ -60,15 +85,18 @@ a:hover {
   padding: 0.5rem;
   background-color: rgba(var(--bg), 0.75);
   backdrop-filter: blur(3px);
-  border: solid;
+  border: solid 1px var(--mid);
   width: fit-content;
 }
+
 .site-nav .content-types {
   display: contents;
 }
+
 .site-nav a {
   text-decoration-color: var(--near-bg);
 }
+
 .site-nav a:hover,
 .site-nav a[aria-current="page"] {
   color: var(--pop);
@@ -77,9 +105,11 @@ a:hover {
 .searchbar {
   border: 1px var(--mid) solid;
 }
+
 .searchbar-wrapper button {
   display: none;
 }
+
 .searchbar input {
   background-color: var(--near-bg);
   color: var(--text);
@@ -87,9 +117,11 @@ a:hover {
   border-radius: 0;
   padding: 0.5rem;
 }
+
 .searchbar input::placeholder {
   color: var(--text);
 }
+
 .searchbar .search-results {
   position: absolute;
   top: calc(100% + 1rem);
@@ -99,6 +131,7 @@ a:hover {
   width: max-content;
   max-width: 400px;
 }
+
 .search-results ul {
   list-style: none;
   padding: 0;
@@ -106,21 +139,26 @@ a:hover {
   flex-direction: column;
   margin: 0;
 }
+
 .search-results li {
   padding: 0.25rem 0.5rem;
   border: solid 1px var(--near-bg);
 }
+
 .search-results li:hover {
   color: var(--pop);
 }
+
 .search-results a {
   display: flex;
   justify-content: space-between;
   gap: 2rem;
 }
+
 .search-results a span {
   color: var(--mid);
 }
+
 @media (max-width: 768px) {
   .nav-wrapper {
     position: fixed;
@@ -130,12 +168,14 @@ a:hover {
     right: 0;
     margin: 0;
   }
+
   .site-nav {
     border-width: 2px 2px 0 0;
     flex-grow: 1;
     padding-inline-start: 1rem;
     overflow: auto;
   }
+
   .site-nav .content-types {
     display: flex;
     gap: 1rem;
@@ -144,14 +184,17 @@ a:hover {
     padding-inline: 1rem;
     margin: 0;
   }
+
   .searchbar-wrapper {
     display: contents;
   }
+
   .searchbar-wrapper button {
     display: block;
     border-width: 2px 0 0 0;
     padding: 0 1rem;
   }
+
   .searchbar {
     position: absolute;
     left: 0;
@@ -161,12 +204,14 @@ a:hover {
     border: solid var(--text);
     border-width: 2px 0 0 0;
   }
+
   .searchbar input {
     display: block;
     padding: 0.5rem;
     font-size: 1rem;
     width: calc(100% - 1rem);
   }
+
   .searchbar .search-results {
     top: auto;
     bottom: 100%;
@@ -180,6 +225,7 @@ main {
   margin: 0.5rem;
   padding: 0.5rem;
 }
+
 main img {
   max-width: 100%;
 }
@@ -192,9 +238,10 @@ h2 small {
 .grid {
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1rem;
 }
+
 .grid-card,
 .grid-card a > p {
   list-style: none;
@@ -202,26 +249,85 @@ h2 small {
 }
 
 .grid-card a {
+  position: relative;
   text-decoration: none;
   margin: 0;
   display: grid;
   border: solid 1px var(--near-bg);
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
 }
+
 .grid-card a:hover {
   border-color: var(--pop);
 }
 
-.grid-card img {
+.grid-card .item-info {
+  display: contents;
+}
+
+.grid-card img.book-cover {
   max-width: 100%;
   max-height: 300px;
   display: block;
+  margin-inline: auto;
   margin-bottom: 0.5rem;
+  transform-style: preserve-3d;
+  transform: rotate3d(0, 1, 0, 15deg) skewY(7.5deg) scale(0.9);
 }
 
-.grid-card span:has(time) {
+.grid-card.books a {
+  border-color: transparent;
+  overflow: hidden;
+}
+
+.grid-card.books .item-info {
+  position: absolute;
+  display: block;
+  background-color: rgba(var(--bg), 0.35);
+  backdrop-filter: blur(2px);
+  top: auto;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.5rem 1rem;
+  border-radius: 8px 8px 0 0;
+  border-top: solid 1px var(--text);
+  transform-style: preserve-3d;
+
+  /* transitioning properties */
+  transform: skewY(7.5deg) translateY(1rem);
+  opacity: 0;
+  transition:
+    opacity 0.08s ease-out,
+    transform 0.11s ease-out,
+    background-color 0.08s ease-out;
+}
+
+.grid-card.books:focus-within .item-info,
+.grid-card.books:hover .item-info {
+  transform: skewY(7.5deg);
+  opacity: 1;
+  background-color: rgba(var(--bg), 0.85);
+}
+
+.grid-card .meta-wrapper {
+  align-self: flex-end;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
   font-size: 0.8em;
   color: var(--mid);
+}
+
+.grid-card img.growth-icon {
+  display: block;
+  margin: 0;
+  width: 36px;
+}
+
+.grid-card .meta {
+  display: flex;
+  flex-direction: column;
 }
 
 footer {

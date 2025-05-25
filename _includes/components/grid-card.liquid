@@ -1,10 +1,23 @@
 <li class="grid-card {{type}}">
 <a href="{{ item.url }}">
   {% if type == 'books' %}
-  <img src="/assets/{{item.data.coverImg}}" alt="Cover of {{item.data.title}}" loading="lazy">
+  <img src="/assets/{{item.data.coverImg}}" alt="Cover of {{item.data.title}}" loading="lazy" class="book-cover">
   {% endif %}
-  <span>{{item.data.title}}</span>
-  {% if item.data.updated %}<span>updated <time>{{ item.data.updated | formatDate }}</time></span>{% endif %}
-  {% if type == 'now' %}<span><time>{{ item.fileSlug }}</time></span>{% endif %}
+  <div class="item-info">
+    <span>{{item.data.title}}</span>
+    <div class="meta-wrapper">
+      {% if item.data.growthStage %}
+      <img class="growth-icon" aria-hidden src="/assets/{{ item.data.growthStage }}-tiny.webp">
+      {% endif %}
+      <div class="meta">
+        {%- if type == 'books' -%}
+          <span>by {{ item.data.author if item.data.author else item.data.editor if item.data.editor else "Unknown author" }}</span>
+        {%- endif -%}
+        {% unless item.data.updated == item.data.created %}<span>updated <time>{{ item.data.updated | formatDate }}</time></span>{% endunless %}
+      {% if item.data.created %}<span>created <time>{{ item.data.created | formatDate }}</time></span>{% endif %}
+      {% if type == 'now' %}<span><time>{{ item.fileSlug }}</time></span>{% endif %}
+      </div>
+    </div>
+  </div>
 </a>
 </li>

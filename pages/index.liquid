@@ -10,7 +10,7 @@ Here are my personal notes and writing. This is a digital garden, so all work is
 <a href="/{{ type.name }}">
   <h2>{{type.name | capitalize }}&nbsp;<small>{{ collections[type.name].length }} items<small></h2></a>
 <ul class="grid">
-  {%- assign sortedCollection = collections[type.name] | sortByKey: 'data.updated', true | head: 15 -%}
+  {%- assign sortedCollection = collections[type.name] | sortByKey: 'data.updated', true | head: 12 -%}
   {% for item in sortedCollection %}
   {% include 'components/grid-card' type: type.name item: item %}{% endfor %}
 </ul>{% endfor %}
