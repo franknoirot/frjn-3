@@ -4,8 +4,8 @@ import addInputDirectoryPlugin from "./addInputDirectoryPlugin.js";
 import markdownItFootnote from "markdown-it-footnote";
 import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 
-const contentTypes = ["posts", "books", "projects", "now"];
-const excludeFromNav = ["now"];
+const contentTypes = ["posts", "books", "projects", "now", "pages"];
+const excludeFromNav = ["now", "pages"];
 
 /** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
 export default async function (eleventyConfig) {
@@ -18,6 +18,7 @@ export default async function (eleventyConfig) {
     "_includes/styles": "/styles",
   });
   eleventyConfig.addGlobalData("layout", "layouts/base.njk");
+  eleventyConfig.addGlobalData("excludeFromNav", excludeFromNav);
   await eleventyConfig.addPlugin(addInputDirectoryPlugin, {
     patterns: ["./pages/**.md", "./pages/**.njk", "./pages/**.liquid"],
     format: "utf-8",
@@ -48,6 +49,10 @@ export default async function (eleventyConfig) {
       dir: "content/public/" + t,
       name: t,
       layout: `layouts/${t}.njk`,
+      // Make the output of pages point to the root output directory
+      permalink:
+        t === "pages" ? "/\{\{ page.fileSlug \}\}/index.html" : undefined,
+      excludeFromNav: excludeFromNav.includes(t),
     })),
   });
 
