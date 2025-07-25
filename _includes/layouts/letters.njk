@@ -1,0 +1,11 @@
+---
+  layout: 'layouts/base.njk'
+  stylesheet: posts
+---
+<h1>Letter to {{to}}</h1>
+<section class="meta">
+  <p><em>sent {{ date | formatDate }}</em></p>
+</section>
+{{ content | safe }}
+
+{% include "components/backlinksSection.njk" %}

@@ -1,0 +1,12 @@
+---
+title: All my public letters
+layout: layouts/base.njk
+---
+<h1>{{ title }}</h1>
+
+I have written some letters to members of Congress and others, and I have chosen to share them as an example in case they help others in political and social advocacy. For anyone who may not agree with their contents, I hope we can at least agree that a public political life is foundational to American democracy, and will respect my desire to normalize engaging with the political context in which everything-including the software I love to build-exists within.
+
+{%- assign sortedLetters = collections.letters | sortByKey: 'data.date', true -%}
+<ul class="grid posts">{% for letter in sortedLetters %}
+  {% include 'components/grid-card' type: 'letters' item: letter %}
+{% endfor %}</ul>

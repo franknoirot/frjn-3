@@ -4,7 +4,7 @@ import addInputDirectoryPlugin from "./addInputDirectoryPlugin.js";
 import markdownItFootnote from "markdown-it-footnote";
 import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 
-const contentTypes = ["posts", "books", "projects", "now", "pages"];
+const contentTypes = ["posts", "books", "projects", "letters", "now", "pages"];
 const excludeFromNav = ["now", "pages"];
 
 /** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */

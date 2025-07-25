@@ -4,7 +4,12 @@
   <img src="/assets/{{item.data.coverImg}}" alt="Cover of {{item.data.title}}" loading="lazy" class="book-cover">
   {% endif %}
   <div class="item-info">
+    {% if type == 'letters' %}
+    <span>Letter to {{item.data.to}}</span>
+    {% else %}
     <span>{{item.data.title}}</span>
+    {% endif %}
+
     <div class="meta-wrapper">
       {% if item.data.growthStage %}
       <img class="growth-icon" aria-hidden src="/assets/{{ item.data.growthStage }}-tiny.webp">
@@ -15,6 +20,7 @@
         {%- endif -%}
         {% unless item.data.updated == item.data.created %}<span>updated <time>{{ item.data.updated | formatDate }}</time></span>{% endunless %}
       {% if item.data.created %}<span>created <time>{{ item.data.created | formatDate }}</time></span>{% endif %}
+      {% if item.data.date %}<span><time>{{ item.data.date | formatDate }}</time></span>{% endif %}
       {% if type == 'now' %}<span><time>{{ item.fileSlug }}</time></span>{% endif %}
       </div>
     </div>
