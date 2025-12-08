@@ -187,6 +187,14 @@ export default async function (eleventyConfig) {
   eleventyConfig.amendLibrary("md", (mdLib) => mdLib.use(markdownItFootnote));
   eleventyConfig.addPlugin(syntaxHighlight);
 
+  /** duplicate the language name picked up by the syntax highlighting plugin into a data attribute */
+  eleventyConfig.addTransform('syntax-highlight-data-attribute', (content) => {
+    const preTagMatcher = new RegExp(/<pre class=\"language-(\w+)\"/g)
+
+    return content.replaceAll(preTagMatcher, (_match, langName) => `<pre data-lang="${langName}" class="language-${langName}"`)
+  })
+
+
   eleventyConfig.addFilter("stripCollectionForSearch", (collection) =>
     collection.map((item) => ({
       url: item.url,

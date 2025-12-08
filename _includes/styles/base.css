@@ -1,8 +1,8 @@
 :root {
   --bg: rgb(30, 40, 50);
-  --text: #dddde2;
+  --text: #e7f5ff;
   --mid: #9aa;
-  --near-bg: #678;
+  --near-bg: hsl(from var(--bg) h s calc(l + 10));
 }
 
 @media (prefers-color-scheme: light) {
@@ -22,12 +22,29 @@ body {
   font-style: normal;
   font-size: 1.5rem;
   line-height: 1.6;
+  position: relative;
   background-color: var(--bg);
   color: var(--text);
   display: grid;
   grid-template-rows: auto 1fr auto;
   grid-template-columns: 1fr;
   min-height: 100vh;
+
+  &::before {
+    content: '';
+    position: fixed;
+    z-index: -1;
+    inset: 0;
+    background: radial-gradient(circle at 50% 75%, var(--bg) 70%, var(--near-bg));
+    filter: url(#grainy);
+  }
+}
+
+/* Noise bg courtesy of Ana Tudor's great example here:
+ * https://codepen.io/thebabydino/pen/abjpEbz
+ */
+svg[height='0'] {
+  position: fixed
 }
 
 a {
@@ -84,7 +101,7 @@ a:hover {
 .searchbar,
 .searchbar-wrapper button,
 .searchbar .search-results {
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   background-color: rgba(from var(--bg) r g b / 0.75);
   backdrop-filter: blur(3px);
   border: solid 1px var(--mid);
@@ -106,6 +123,8 @@ a:hover {
 
 .searchbar {
   border: 1px var(--mid) solid;
+  padding: 0;
+  margin: 0.5rem;
 }
 
 .searchbar-wrapper button {
@@ -192,9 +211,15 @@ a:hover {
   }
 
   .searchbar-wrapper button {
+    color: currentColor;
     display: block;
+    padding: 0 0.5rem;
     border-width: 2px 0 0 0;
-    padding: 0 1rem;
+
+    & svg {
+      display: block;
+      width: 3em;
+    }
   }
 
   .searchbar {

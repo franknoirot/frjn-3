@@ -19,9 +19,9 @@
           <span>by {{ item.data.author if item.data.author else item.data.editor if item.data.editor else "Unknown author" }}</span>
         {%- endif -%}
         {% unless item.data.updated == item.data.created %}<span>updated <time>{{ item.data.updated | formatDate }}</time></span>{% endunless %}
-      {% if item.data.created %}<span>created <time>{{ item.data.created | formatDate }}</time></span>{% endif %}
-      {% if item.data.date %}<span><time>{{ item.data.date | formatDate }}</time></span>{% endif %}
-      {% if type == 'now' %}<span><time>{{ item.fileSlug }}</time></span>{% endif %}
+        {% if item.data.created %}<span>created <time>{{ item.data.created | formatDate }}</time></span>{% endif %}
+        {% if item.data.date %}<span><time>{{ item.data.date | formatDate }}</time></span>{% endif %}
+        {% if type == 'now' %}<span><time>{{ item.fileSlug }}</time></span>{% endif %}
       </div>
     </div>
   </div>
