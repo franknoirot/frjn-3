@@ -10,7 +10,7 @@
     --bg: rgb(245, 245, 245);
     --text: #1a1a1a;
     --mid: #889;
-    --near-bg: #ccc;
+    --near-bg: #daeffa;
   }
 }
 
@@ -37,6 +37,10 @@ body {
     inset: 0;
     background: radial-gradient(circle at 50% 75%, var(--bg) 70%, var(--near-bg));
     filter: url(#grainy);
+
+    @media(prefers-color-scheme: light) {
+      filter: url(#grainy) opacity(0.2);
+    }
   }
 }
 
@@ -318,14 +322,13 @@ h2 small {
   right: 0;
   padding: 0.5rem 1rem;
   border-radius: 8px 8px 0 0;
-  border-top: solid 1px var(--text);
+  border-top: solid 1px var(--mid);
   transform-style: preserve-3d;
 
   /* transitioning properties */
   transform: skewY(7.5deg) translateY(1rem);
   opacity: 0;
-  transition:
-    opacity 0.08s ease-out,
+  transition: opacity 0.08s ease-out,
     transform 0.11s ease-out,
     background-color 0.08s ease-out;
 }
