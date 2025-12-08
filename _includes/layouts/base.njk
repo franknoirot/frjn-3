@@ -11,9 +11,10 @@ description: Writings from Brooklyn, a digital garden.
     <title>{%- if title -%}{{title}} |&nbsp;{%- endif -%}f.noirot's garden</title>
     <meta name="title" content="{%- if title -%}{{title}} |&nbsp;{%- endif -%}f.noirot's garden" />
     <meta name="description" content="{{ description }}" />
-    <link rel="preload" href="/styles/fonts.css" as="style">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">    <link rel="preload" href="/styles/fonts.css" as="style">
     <link rel="stylesheet" href="/styles/base.css">
-    <link rel="stylesheet" href="https://unpkg.com/prismjs@1.20.0/themes/prism-coy.css">
     {% if stylesheet %}
     <link rel="stylesheet" href="/styles/{{ stylesheet }}.css">
     {% endif %}

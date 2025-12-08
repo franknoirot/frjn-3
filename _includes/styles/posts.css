@@ -1,6 +1,19 @@
+@import '/styles/ghcolors-syntax.css';
+@import '/styles/syntax-atom-dark.css';
+
 main {
-  max-width: 80ch;
+  max-width: min(80ch, 100vw);
   margin-inline: auto;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 4rem;
+  line-height: 1.1;
+
+  @media (max-width: 450px) {
+    font-size: 2.5rem;
+  }
 }
 
 main img,
@@ -17,4 +30,17 @@ main video {
 
 .meta p {
   margin: 0.5rem;
+}
+
+p code {
+  font-size: .75em;
+  padding: 0.05em .3em;
+  display: inline-block;
+  background-color: hsl(from var(--bg) h s calc(l + 10));
+  border-radius: 4px;
+  border-bottom: 1px solid var(--near-bg);
+}
+
+pre[class*="language-"] {
+  font-size: 0.75em;
 }

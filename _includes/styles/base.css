@@ -1,5 +1,5 @@
 :root {
-  --bg: 30, 40, 50;
+  --bg: rgb(30, 40, 50);
   --text: #dddde2;
   --mid: #9aa;
   --near-bg: #678;
@@ -7,7 +7,7 @@
 
 @media (prefers-color-scheme: light) {
   :root {
-    --bg: 245, 245, 245;
+    --bg: rgb(245, 245, 245);
     --text: #1a1a1a;
     --mid: #889;
     --near-bg: #ccc;
@@ -17,10 +17,12 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: "Overpass", sans-serif;
-  font-size: 1.125rem;
+  font-family: "Alegreya", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: 1.5rem;
   line-height: 1.6;
-  background-color: rgb(var(--bg));
+  background-color: var(--bg);
   color: var(--text);
   display: grid;
   grid-template-rows: auto 1fr auto;
@@ -83,7 +85,7 @@ a:hover {
 .searchbar-wrapper button,
 .searchbar .search-results {
   padding: 0.5rem;
-  background-color: rgba(var(--bg), 0.75);
+  background-color: rgba(from var(--bg) r g b / 0.75);
   backdrop-filter: blur(3px);
   border: solid 1px var(--mid);
   width: fit-content;
@@ -243,7 +245,7 @@ h2 small {
 }
 
 .grid-card,
-.grid-card a > p {
+.grid-card a>p {
   list-style: none;
   display: contents;
 }
@@ -283,7 +285,7 @@ h2 small {
 .grid-card.books .item-info {
   position: absolute;
   display: block;
-  background-color: rgba(var(--bg), 0.35);
+  background-color: rgba(from var(--bg) r g b / 0.35);
   backdrop-filter: blur(2px);
   top: auto;
   bottom: 0;
@@ -307,7 +309,7 @@ h2 small {
 .grid-card.books:hover .item-info {
   transform: skewY(7.5deg);
   opacity: 1;
-  background-color: rgba(var(--bg), 0.85);
+  background-color: rgba(from var(--bg) r g b / 0.85);
 }
 
 .grid-card .meta-wrapper {
