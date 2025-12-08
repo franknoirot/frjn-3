@@ -44,7 +44,7 @@ main pre {
   margin: 0.5rem;
 }
 
-p code {
+:not(pre)>code {
   font-size: .75em;
   padding: 0.05em .3em;
   display: inline-block;
